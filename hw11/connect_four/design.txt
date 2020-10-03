@@ -1,0 +1,78 @@
+What data structures you’ll need (lists, dictionaries, etc.)
+A: I will need 
+What classes you’ll define
+What functions you’ll need (methods within classes, or other functions that exist outside of any class)
+A short description of each class and function/method
+A bullet-pointed pseudocode of your driver: Tell us about the flow of control, and think about the following cases:
+When the user makes a move
+When the disk is dropping
+When it’s the computer’s turn
+When game over status is assessed
+
+We will create a Board object to draw the board with blue lines.
+we will create a Disk object to generate disks.
+We will create a GameController object to organize the drawing and algorithm
+We will operate the GameController object in the "Connect_four" pyde file.
+
+Board object:
+
+    The Board object should have the following attributes passed through the GameController:
+        set the width attribute from the width in the GameController
+        set the height attribute from the height in the GameController
+        set blue line's width to be 15
+        set the row_height attribute from the row_height in the GameController
+        set the column_width attribute from the column_width in the GameController
+
+    A draw_line() method
+    to draw horizontal lines
+        for row_count in range of 0 and total row count
+            fill the line color by stroke(0, 0, 255)
+            set the line width to be the line's width defined above.
+            draw the lines using:
+                line(0, self.height - self.row_height * row_count,
+                    self.width, self.height - self.row_height * row_count)
+    to draw vertical lines
+        for column_count in range of 0 and total column count
+            fill the line color by stroke(0, 0, 255)
+            set the line width to be the line's width defined above.
+            draw the lines using:
+                line(self.column_width * column_count, self.row_height,
+                    self.column_width * column_count, self.height)
+    A message() method that draws three situations of game over messages: "Red wins," "Yellow wins," and "Board is full. Tie."
+
+
+Disk object:
+
+    The Disk object should have the following attributes passed through the GameController:
+        The disk's x coordinate
+        The disk's y coordinate
+        The disk's color
+        # in addition, the disk should have the following attribute not passing through the GameController:
+        set the initial status of whether the disk should fall or not to be False
+        set the rate of falling to be 1
+        set the disk's radius to be 50 (half of the row height)
+        # when the disk is generated but not falling, set position to be -1. 
+        # if it falls to bottom, position will be 0.
+        set the disk's initial position to be -1
+
+    When the mouse is clicked, display the disk:
+        set the disk to have no outline by doing noStroke()
+        fill the disk with the color passed in
+        draw the disk using ellipse(x coordinate, y coordinate, row height, column width)
+
+GameController object:
+    The GameController object should call the Disk Object and the Board Object and pass values into them. It also has attributes and functions that are passing through the main pyde file:
+    A list for appending dropped disks
+    Nested lists that handles different rows of the board
+    A COL_COUNT of 6
+    A human_player_turn boolean value to switch between human player and AI player
+    A timing delay of 2 for showing the game over message
+    An update() method that handles the positions, motions changes of each disk. It also processes the logic and boolean values for AI to set disks.It uses the nested lists for all disks' positions to determine whether the game is over and prompt game over message to corresponding situations
+    A prepare_to_drop() method that gets the initial mouse position and append the disk object to the disks list
+    A handle_dragged() method that catches when the user is dragging the keyboard and determines which column the user is selecting
+    A start_drop() method that trigger the animation of dropping disk and switch between user/computer's turn and hide/active disk
+    A create_new_disk method that append new disk object to the disks list and determine its color based on the boolean value of whether it's human's turn
+
+In the main pyde file:
+    set up the space, call GameController object and its methods in draw()for drawing and mousePressed(), mouseDragged() and mouseReleased() for mouse activities.
+

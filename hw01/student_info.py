@@ -1,0 +1,5 @@
+print("My name is Xiaoxia Yin")
+print("My birthday is July 24, 1997")
+print("My hobbies are reading, singing, jogging and visiting museums")
+print("My favorite book is 1984")
+print("My favorite movie is The Legend of 1900 ")

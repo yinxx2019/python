@@ -1,0 +1,10 @@
+1. Yes
+2. yes
+3. Yes
+4. Yes
+5. No
+6. No
+7. Yes
+8. It prints 10 because the assignment num = 10 in the main function binds the variable named num to an immutable object (integer 10). 
+9. It is legal. The names do not matter because the two x variables live in two completely different contexts and the parameter passing process is correct.
+10. It is legal. The names do not matter because the x and y variables live in two completely different contexts and the parameter passing process is correct.
